@@ -1,59 +1,686 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Nur Al Quran</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Nur Al-Quran</title>
+    <meta
+      name="description"
+      content="How Nur Al-Quran handles your information. An optional account keeps your record across devices; no tracking and no analytics. Approximate coordinates are sent to named prayer-time and geocoding services for app functionality."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+      /* Noor 3.0 — light only, deep indigo and warm amber on a clean ground.
+         No gradients. Borders instead of elevation. The mihrab arch is the
+         signature shape. */
+      :root {
+        --night: #121c3d;
+        --indigo: #1e2b5e;
+        --indigo-soft: #eef0f7;
+        --amber: #f2b24c;
+        --amber-deep: #8a5a0b;
+        --amber-soft: #fbf1df;
+        --amber-line: #d9b26a;
+        --done: #1d7466;
+        --ground: #f4f4f0;
+        --surface: #ffffff;
+        --line: #e4e5df;
+        --ink: #101828;
+        --ink-soft: #475467;
+        --muted: #5d6876;
+        --radius-card: 22px;
+        --radius-tile: 18px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--ground);
+        color: var(--ink);
+        font-family: 'IBM Plex Sans Arabic', system-ui, -apple-system, Segoe UI, sans-serif;
+        font-size: 16px;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 16px 72px;
+      }
+
+      /* ── Mihrab arch header ───────────────────────────────────────────── */
+      header {
+        background: var(--night);
+        color: #fff;
+        border-radius: 0 0 var(--radius-card) var(--radius-card);
+        padding: 44px 16px 40px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .arch {
+        width: 108px;
+        height: 134px;
+        margin: 0 auto 20px;
+        border: 1px solid rgba(242, 178, 76, 0.35);
+        border-radius: 54px 54px 10px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .arch::before {
+        content: '';
+        position: absolute;
+        inset: 10px;
+        border: 1px solid rgba(242, 178, 76, 0.2);
+        border-radius: 44px 44px 6px 6px;
+      }
+
+      .arch span {
+        font-size: 34px;
+        color: var(--amber);
+        line-height: 1;
+      }
+
+      header h1 {
+        margin: 0 0 6px;
+        font-size: 27px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      header .sub {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      .lang {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 7px 16px;
+        border-radius: 999px;
+        background: rgba(242, 178, 76, 0.14);
+        color: var(--amber);
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid rgba(242, 178, 76, 0.35);
+      }
+
+      /* ── Content ──────────────────────────────────────────────────────── */
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-card);
+        padding: 22px 24px;
+        margin-top: 18px;
+      }
+
+      .card.accent {
+        background: var(--amber-soft);
+        border-color: var(--amber-line);
+      }
+
+      h2 {
+        font-size: 19px;
+        font-weight: 700;
+        margin: 0 0 12px;
+        color: var(--indigo);
+      }
+
+      h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 20px 0 8px;
+        color: var(--ink);
+      }
+
+      p {
+        margin: 0 0 12px;
+        color: var(--ink-soft);
+      }
+
+      p:last-child,
+      ul:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      ul {
+        margin: 0 0 12px;
+        padding-inline-start: 22px;
+        color: var(--ink-soft);
+      }
+
+      li {
+        margin-bottom: 7px;
+      }
+
+      a {
+        color: var(--indigo);
+        text-decoration-color: var(--amber-line);
+        text-underline-offset: 2px;
+      }
+
+      .summary {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .summary li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        margin-bottom: 12px;
+      }
+
+      .summary li:last-child {
+        margin-bottom: 0;
+      }
+
+      .tick {
+        flex: 0 0 24px;
+        height: 24px;
+        border-radius: 8px;
+        background: var(--indigo-soft);
+        color: var(--done);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 700;
+        margin-top: 2px;
+      }
+
+      .table-scroll {
+        overflow-x: auto;
+        margin: 0 0 12px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+        min-width: 460px;
+      }
+
+      th,
+      td {
+        text-align: start;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+        color: var(--ink-soft);
+      }
+
+      th {
+        color: var(--indigo);
+        font-weight: 600;
+        background: var(--indigo-soft);
+        white-space: nowrap;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      code {
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 13px;
+        background: var(--indigo-soft);
+        padding: 1px 5px;
+        border-radius: 5px;
+        color: var(--night);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      footer .bism {
+        color: var(--indigo);
+        font-size: 17px;
+        margin-bottom: 8px;
+      }
+
+      @media (max-width: 480px) {
+        header {
+          padding: 34px 16px 30px;
         }
-        h1 { border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        h2 { margin-top: 30px; color: #444; }
-        p { margin-bottom: 15px; }
-        .footer { margin-top: 50px; font-size: 0.9em; color: #777; border-top: 1px solid #eee; padding-top: 20px; }
+        header h1 {
+          font-size: 23px;
+        }
+        .card {
+          padding: 18px 18px;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <header>
+      <div class="arch"><span>✷</span></div>
+      <h1>Privacy Policy</h1>
+      <p class="sub">Nur Al-Quran · نور القرآن — version 1.6.0 · Last updated 5 November 2026</p>
+      <a class="lang" href="PrivacyPolicy-ar.html" lang="ar" dir="rtl">العربية</a>
+    </header>
 
-    <h1>Privacy Policy</h1>
-    <p>This privacy policy applies to the <strong>Nur Al Quran</strong> app (hereby referred to as "Application") for mobile devices that was created by <strong>Edveera Tech</strong> (hereby referred to as "Service Provider") as a Free service. This service is intended for use "AS IS".</p>
+    <div class="wrap">
+      <div class="card accent">
+        <h2>The short version</h2>
+        <ul class="summary">
+          <li><span class="tick">✓</span><span><strong>An account is optional, and nothing needs one.</strong> Every feature works without signing in. If you do sign in with Apple or Google, it is so your record survives a new phone.</span></li>
+          <li><span class="tick">✓</span><span><strong>If you sign in, your own record is stored on our server</strong> — prayers, fasting, reading progress, hifz, khatma membership and the text of your reflections — so it can reach your other devices. It is held in the European Union and is not used for anything else.</span></li>
+          <li><span class="tick">✓</span><span><strong>You can delete the account and everything in it from inside the app</strong>, in one step, with no email and no waiting.</span></li>
+          <li><span class="tick">✓</span><span><strong>No analytics, no tracking, no advertising.</strong> There is no tracking SDK of any kind in the app, and nothing to opt out of.</span></li>
+          <li><span class="tick">✓</span><span><strong>Background Live Activity updates are optional.</strong> In builds that include the service, enabling the setting sends your city label, time zone and prayer schedule with ActivityKit tokens to our configured service. It does not send your coordinates to that service.</span></li>
+          <li><span class="tick">✓</span><span><strong>No name, account or advertising ID is sent.</strong> The optional feature uses a random installation ID only to associate its schedule and ActivityKit tokens with this installation.</span></li>
+          <li><span class="tick">✓</span><span><strong>No AI features.</strong> Nothing you read or search is sent to any AI service.</span></li>
+          <li><span class="tick">✓</span><span><strong>Only approximate coordinates leave the device</strong> — rounded to about 1.1&nbsp;km first — and they go for prayer-time calculation and city lookup, and to the Malaysia zone resolver only when that method is selected. The optional ActivityKit service receives a city label, not coordinates.</span></li>
+        </ul>
+      </div>
 
-    <h2>Information Collection and Use</h2>
-    <p>The Application collects information about the <strong>location of your mobile device</strong> to provide location-based features, such as calculating accurate prayer times and determining the Qibla direction. This information is processed locally on your device or used to provide these specific features while the app is in use.</p>
-    
-    <p>The Application does not gather any other personally identifiable information directly. It does not use Artificial Intelligence (AI) technologies to process your data or provide features.</p>
+      <div class="card">
+        <h2>1. Who we are</h2>
+        <p>
+          Nur Al-Quran (“the App”) is an independent app for reading the Qur'an, listening to
+          recitation, following prayer times, the Qibla, and daily adhkar. It is published for
+          iPhone, iPad and Android.
+        </p>
+        <p>
+          Questions about privacy, or about anything in this policy:
+          <a href="mailto:mohammad.karim94@gmail.com">mohammad.karim94@gmail.com</a>.
+        </p>
+      </div>
 
-    <h2>Third Party Access</h2>
-    <p>Since the Application is distributed through the Google Play Store, it uses <strong>Google Play Services</strong>, which may collect information used to identify you or your device to ensure the app functions correctly on the Android platform. You can find the link to the privacy policy of these third-party service providers below:</p>
-    <ul>
-        <li><a href="https://www.google.com/policies/privacy/" target="_blank">Google Play Services</a></li>
-    </ul>
+      <div class="card">
+        <h2>2. Your location</h2>
+        <p>
+          The App asks for location permission so that it can work out <strong>prayer times for
+          where you actually are</strong>, schedule the adhan notifications, keep the home-screen
+          and lock-screen widgets correct, and point the Qibla compass towards the Kaaba.
+        </p>
+        <p>
+          On a first install, the App explains this on its last onboarding screen
+          <strong>before</strong> the system permission dialog appears, and asks only when you tap
+          “Enable”. If you choose “Not now”, or skip onboarding, nothing is requested. You can
+          grant or revoke location at any time in your device settings, and you can use the
+          Qur'an, tafsir, recitation and adhkar without it.
+        </p>
 
-    <h2>Opt-Out Rights</h2>
-    <p>You can stop all collection of information by the Application easily by uninstalling it. You may also manage location permissions through your device's system settings if you wish to disable location-based features like prayer times.</p>
+        <h3>Where your coordinates go</h3>
+        <p>
+          Prayer times are calculated from your coordinates. The App does this by asking public
+          prayer-time services, which means <strong>your latitude and longitude are sent to those
+          services</strong>. We want to be exact about which ones:
+        </p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>What it receives</th>
+                <th>Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>api.aladhan.com</code></td>
+                <td>Your latitude and longitude <strong>rounded to about 1.1&nbsp;km</strong>,
+                  the date, your calculation method, your Asr school, your time zone name, and
+                  any minute adjustments you set</td>
+                <td>To return the prayer timings for that place and day</td>
+              </tr>
+              <tr>
+                <td><code>api-bdc.net</code> (BigDataCloud)</td>
+                <td>Your latitude and longitude <strong>rounded to about 1.1&nbsp;km</strong>,
+                  and the language you have chosen in the App (<code>ar</code> or
+                  <code>en</code>)</td>
+                <td>Reverse geocoding: to turn them into a city name, so the App can show “your
+                  location” as a place rather than numbers, and in your own language. Only the
+                  city-level answer is kept</td>
+              </tr>
+              <tr>
+                <td><code>mpt-server.vercel.app</code></td>
+                <td>Your latitude and longitude <strong>rounded to about 1.1&nbsp;km</strong></td>
+                <td><strong>Only if you use the Malaysia calculation method</strong> — to find
+                  which JAKIM zone you are in</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          These requests carry <strong>no name, no account and no identifier</strong> — nothing
+          that ties the coordinates to you or to your other requests. Like any web request, they
+          do reveal your IP address to the service you are contacting. Each service handles what
+          it receives under its own privacy policy, and we have no access to their records.
+        </p>
+        <p>
+          If you select one of the official national providers, it is given <strong>less</strong>:
+          <code>www.e-solat.gov.my</code> receives a zone code, <code>data.gov.sg</code> receives a
+          date, and <code>portal.moi.gov.qa</code> receives nothing at all.
+        </p>
+        <p>
+          Your last known coordinates and city label are also <strong>stored on your device</strong>,
+          so prayer times and widgets work without a lookup every time — including inside the
+          iOS App Group and Android shared preferences that the widgets read from. The app sends
+          coordinates to the external services listed above when it needs their response. If you
+          separately enable background Prayer Live Activity updates, the configured service gets
+          only the city label, time zone and localized prayer schedule, never latitude or longitude.
+        </p>
+      </div>
 
-    <h2>Data Retention Policy</h2>
-    <p>The Service Provider does not store or share your location data on any external servers; it is used only for real-time calculations. If you contact the Service Provider via email, your email address will only be used to respond to your inquiry and will not be shared with third parties.</p>
+      <div class="card">
+        <h2>3. Your account, and what syncs</h2>
+        <p>
+          The App can be used from start to finish <strong>without an account</strong>. Nothing is
+          behind a sign-in: the Qur'an, tafsir, recitation, prayer times, the Qibla, adhkar, your
+          khatma and your prayer record all work on a device that has never signed in. On first
+          launch the App creates an <em>anonymous</em> account for itself so that your record has
+          somewhere to live; it carries no name, no email and nothing that identifies you.
+        </p>
+        <p>
+          You may sign in with <strong>Apple</strong> or <strong>Google</strong>, and the only
+          reason to is this: an anonymous record lives on one device, and signing in lets it
+          follow you to a new phone. When you do, the anonymous record you already have is joined
+          to the account rather than replaced.
+        </p>
 
-    <h2>Children</h2>
-    <p>The Service Provider does not use the Application to knowingly solicit data from or market to children under the age of 13. If a parent or guardian becomes aware that his or her child has provided us with information without their consent, he or she should contact us at <strong>mohammad.karim94@gmail.com</strong> so that we can take necessary actions.</p>
+        <h3>What the account holds</h3>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Data</th>
+                <th>Where it comes from, and why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Email address</td>
+                <td>From Apple or Google when you sign in, so the same account can be recognised
+                  on another device. If you use Apple's “Hide My Email”, we receive only the
+                  relay address and never your real one.</td>
+              </tr>
+              <tr>
+                <td>Name</td>
+                <td>Only if Apple or Google passes one at sign-in. It is never required, and
+                  nothing in the App displays it to anybody else.</td>
+              </tr>
+              <tr>
+                <td>User ID</td>
+                <td>The account identifier every synced row carries. It is how your record is
+                  told apart from somebody else's, and nothing more.</td>
+              </tr>
+              <tr>
+                <td>Your own content</td>
+                <td>Prayer and fasting records, reading progress and the last page you were on,
+                  hifz plans and reviews, khatma membership and which juz you took, and the text
+                  of any reflections you write at an ayah.</td>
+              </tr>
+              <tr>
+                <td>Khatma display name</td>
+                <td>Only if you join a group khatma. You choose it yourself when you join, it can
+                  be anything, and it is shown to the other members of <em>that</em> group — with
+                  which juz you took, and nothing else.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-    <h2>Security</h2>
-    <p>The Service Provider is concerned about safeguarding the confidentiality of your information and provides physical, electronic, and procedural safeguards to protect information processed and maintained.</p>
+        <h3>What other people in a group khatma can see</h3>
+        <p>
+          The display name you chose for that group, and which juz you have taken and read.
+          <strong>Not</strong> your prayers, your fasting, your reading elsewhere in the Qur'an,
+          your hifz, your reflections, your email or your real name. There is nowhere in the
+          group for any of it to appear.
+        </p>
 
-    <h2>Changes</h2>
-    <p>This Privacy Policy may be updated from time to time for any reason. The Service Provider will notify you of any changes by updating this page. You are advised to consult this Privacy Policy regularly for any changes.</p>
+        <h3>Where it is stored</h3>
+        <p>
+          On <a href="https://supabase.com/privacy" rel="noopener">Supabase</a>, in the
+          <strong>European Union</strong>, which encrypts stored data at rest and data in transit.
+          It is used to hold your record and for nothing else: it is not profiled, not analysed,
+          not sold, and not shared with anyone. There is no advertising and no tracking anywhere
+          in the App.
+        </p>
 
-    <div class="footer">
-        <p>This privacy policy is effective as of <strong>2026-04-09</strong>.</p>
-        <p><strong>Contact Us:</strong> If you have any questions regarding privacy while using the Application, please contact us at <a href="mailto:mohammad.karim94@gmail.com">mohammad.karim94@gmail.com</a>.</p>
+        <h3>Deleting it</h3>
+        <p>
+          <strong>Settings → Account → “Delete account and all data”.</strong> One confirmation,
+          and it deletes the account, every row belonging to it on the server, and the copy on
+          your device. There is no form to fill in, no email to send and no waiting period. If
+          you were in a group khatma, your membership and your display name go with it.
+        </p>
+        <p>
+          Signing out, by contrast, leaves your record on the server so that signing back in
+          returns it.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>4. Qur'an text, tafsir and recitation</h2>
+        <p>
+          Qur'an text, translations, tafsir and recitation are loaded from public Islamic content
+          services. These requests contain <strong>only what is needed to fetch the content</strong>
+          — a surah number, an ayah number, a reciter or tafsir ID, or a search term you typed.
+          They carry no location and no identifier.
+        </p>
+        <ul>
+          <li><code>api.alquran.cloud</code> and <code>alquran.api.islamic.network</code> — Qur'an text, translations and search</li>
+          <li><code>cdn.jsdelivr.net</code> — tafsir text</li>
+          <li><code>api.quran.com</code> — the reciter catalogue</li>
+          <li><code>api.quranpedia.net</code> — ayah study material</li>
+          <li><code>download.quranicaudio.com</code>, <code>mp3quran.net</code>, <code>media.way2quran.com</code> — recitation audio</li>
+        </ul>
+        <p>
+          As with any media server, the audio hosts can see which file you are streaming, which
+          means which surah and reciter. Nothing accompanies that beyond your IP address.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>5. What stays on your device</h2>
+        <p>
+          Whether or not you sign in, the App keeps a working copy of everything on your device,
+          and it is what the App reads from. What a signed-in account adds is a <em>second</em>
+          copy on the server, described in section 3 — the two are kept in step. The settings and
+          caches below never leave the device at all. The optional background Prayer Live
+          Activity feature has a separate, limited data flow described below.
+        </p>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Examples</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Settings</td>
+                <td>Language, reciter, tafsir edition, calculation method, Asr school, adhan and iqama adjustments</td>
+              </tr>
+              <tr>
+                <td>Location</td>
+                <td>Last known coordinates and city label</td>
+              </tr>
+              <tr>
+                <td>Reading</td>
+                <td>Bookmarks, last read position, search history</td>
+              </tr>
+              <tr>
+                <td>Adhkar and tasbih</td>
+                <td>Your counters, daily log and streak</td>
+              </tr>
+              <tr>
+                <td>Activity</td>
+                <td>App-open counts and active days, shown on your own profile screen</td>
+              </tr>
+              <tr>
+                <td>Caches and downloads</td>
+                <td>Qur'an text, tafsir and any recitation you download for offline use</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          “Clear cache” in Settings removes the cached text and downloads. Uninstalling the App
+          removes everything. If your phone's own backup includes app data, this data may be
+          included in <em>your</em> backup, held by Apple or Google under their terms — not by us.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>6. Crash reports and diagnostics</h2>
+        <p>
+          <strong>None are collected.</strong> If the App hits an error it recovers on your
+          device and writes the detail to the local device log. There is no crash-reporting
+          service in the App — no Crashlytics, no Sentry, nothing — and no diagnostic data is
+          transmitted.
+        </p>
+        <p>
+          Apple and Google may still collect their own crash data at the operating-system level
+          if you have agreed to share it with them. That is between you and them, and we cannot
+          see it.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>7. Notifications and alarms</h2>
+        <p>
+          Notification permission is used to tell you when a prayer time arrives and when the
+          morning and evening adhkar windows open. Notifications are scheduled
+          <strong>on your device</strong>. The optional Prayer Live Activity setting uses ActivityKit
+          pushes only to refresh its Lock Screen presentation; it does not send adhan alerts.
+        </p>
+        <h3>Optional background Prayer Live Activity updates</h3>
+        <p>
+          In a build configured with the service, you can enable this in Prayer &amp; Adhkar
+          reminder settings. It is <strong>off until you turn it on</strong>. The service receives
+          a random installation ID, an authentication secret (stored only as a one-way hash, so
+          the stored copy cannot be used to impersonate you), ActivityKit push tokens, your
+          city-level label, time zone, app language and a two-day localized prayer schedule.
+          <strong>Your coordinates are never sent to it</strong>, and it holds nothing else — no
+          name, no account, no advertising identifier, no reading history. It is hosted in the
+          <strong>European Union (Ireland)</strong>, on Supabase infrastructure that encrypts
+          stored data at rest; from there it reaches Apple's push servers and nowhere else.
+          It deletes the record when you turn
+          the setting off, and a record not heard from for 48 hours is deleted automatically,
+          because the schedule it holds covers two days and has by then run out. If you are
+          offline when you turn it off, deletion is retried while the app can reach the service
+          and on the next launch.
+        </p>
+        <p>
+          What it does with all of that is narrow: at each prayer event in the schedule you
+          uploaded it sends the same schedule back to your phone, because an ActivityKit push is
+          what makes iOS redraw the Lock Screen banner. It performs no prayer-time calculation of
+          its own and sends you no alerts.
+        </p>
+        <p>
+          iOS ends a Live Activity roughly eight hours after it starts, so the service hands over
+          to a fresh one at 7 hours 45 minutes and can do so a few times per uploaded schedule.
+          Open the app at least every two days to refresh that schedule; once it runs out, the
+          banner says so and nothing further is sent. APNs delivery, network access, ActivityKit
+          permissions and Apple's update limits can all affect delivery.
+        </p>
+        <h3>Android: “Alarms &amp; reminders”</h3>
+        <p>
+          On Android 12 and later the App uses the <code>SCHEDULE_EXACT_ALARM</code> permission so
+          the adhan arrives at the right minute rather than whenever the system next gets around
+          to it. If you turn it off, the App keeps working and the adhan still arrives — just not
+          exactly on time. The App explains this on its own screen, in Settings → “Adhan on
+          time”. The App does <strong>not</strong> use <code>USE_EXACT_ALARM</code>, the permission
+          that cannot be revoked.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>8. Children</h2>
+        <p>
+          The App is suitable for all ages and is not directed at children. It has no
+          advertising, no analytics, no chat and no public profile, and nothing in it is
+          recommended or targeted on the basis of who anyone is.
+        </p>
+        <p>
+          It does have an optional account (section 3) and one shared feature: a group khatma,
+          which is joined by a six-character code given out by whoever started it. Inside a group
+          a member sees only a chosen display name and which juz each person took — there is no
+          messaging, no photographs and no free text shared between members. A parent or guardian
+          who would rather none of that applied can simply not sign in; every other part of the
+          App works the same way without it.
+        </p>
+        <p>
+          The optional background Live Activity feature may transmit a city-level location,
+          prayer schedule and installation identifier when enabled. A parent or guardian can
+          leave it off or turn it off at any time. If you have a concern about a child's data,
+          please write to us.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>9. Your rights</h2>
+        <p>
+          <strong>If you have an account, you can delete it and everything in it from inside the
+          App</strong> — Settings → Account → “Delete account and all data”. It is immediate and
+          it is complete: the account, the server rows and the local copy. You do not need to ask
+          us, and there is nothing we keep back.
+        </p>
+        <p>
+          If you enable background Prayer Live Activity updates, you can remove the service's
+          installation record by turning that setting off while online. The service retains no
+          name or account profile. Its encrypted schedule and tokens are deleted on opt-out or
+          after 48 hours without an app or token update. Other data described in section 5 stays
+          on your device; clear it in Settings or uninstall the App.
+        </p>
+        <p>
+          For the coordinates sent to the prayer-time services in section 2, any rights you wish
+          to exercise would be against those services directly, under their own policies. We have
+          nothing to hand over or delete on their behalf.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>10. Changes to this policy</h2>
+        <p>
+          If the App's handling of data changes, this page changes with it and the date at the top
+          is updated. A change that affects what leaves your device will also be described in the
+          App's store release notes.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>11. Contact</h2>
+        <p>
+          <a href="mailto:mohammad.karim94@gmail.com">mohammad.karim94@gmail.com</a>
+        </p>
+      </div>
+
+      <footer>
+        <div class="bism">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        Nur Al-Quran · نور القرآن
+      </footer>
     </div>
-
-</body>
+  </body>
 </html>
